@@ -3,7 +3,7 @@
 ## :memo: Descrição
 Sistema de Gerenciamento de Biblioteca feito em C.
 Desenvolvido para o projeto final da disciplina Programação de Computadores 2 do curso de Ciencia da Computação da UFRJ.
-(Certifique que o ambiente está formatado para ISO 8859-1)
+(Certifique que o ambiente está formatado para ISO 8859-1, ou use chcp 65001)
 
 ## Funcionalidades
 **Adicionar Livro:** 
