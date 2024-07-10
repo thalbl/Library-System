@@ -31,6 +31,8 @@ typedef struct Pilha {
     Emprestimo *topo;
 } Pilha;
 
+Livro* buscarLivroPorISBN(Lista *lista, char *isbn);
+
 // Função para criar um novo livro
 Livro* criarLivro(char *titulo, char *autor, char *isbn, int ano) {
     Livro *novoLivro = (Livro *)malloc(sizeof(Livro));
@@ -45,6 +47,13 @@ Livro* criarLivro(char *titulo, char *autor, char *isbn, int ano) {
 
 // Função para adicionar um livro à lista ligada
 void adicionarLivro(Lista *lista, Livro *livro) {
+    // Verifica se já existe um livro com o mesmo ISBN
+    Livro *existente = buscarLivroPorISBN(lista, livro->isbn);
+    if (existente != NULL) {
+        printf("Erro: Já existe um livro com o mesmo ISBN.\n");
+        free(livro); // Libera a memória alocada para o novo livro
+        return;
+    }
     livro->proximo = lista->cabeca;
     lista->cabeca = livro;
 }
@@ -249,18 +258,6 @@ void bubbleSort(Livro *array[], int n) {
                 troca(&array[j], &array[j + 1]);
             }
         }
-    }
-}
-
-void insertionSort(Livro *array[], int n) {
-    for (int i = 1; i < n; i++) {
-        Livro *chave = array[i];
-        int j = i - 1;
-        while (j >= 0 && strcmp(array[j]->titulo, chave->titulo) > 0) {
-            array[j + 1] = array[j];
-            j--;
-        }
-        array[j + 1] = chave;
     }
 }
 
